@@ -28,7 +28,7 @@ go vet -vettool="$env:yourinstall\path\wpsfuncprefix.exe" ./...
 version: "2"
 
 linters:
-  disable-all: true
+  default: none
   enable:
     - wpsfuncprefix
 
