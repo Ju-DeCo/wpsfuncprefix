@@ -1,4 +1,4 @@
-package wpsfuncprefix
+package main
 
 import (
 	"github.com/golangci/plugin-module-register/register"
