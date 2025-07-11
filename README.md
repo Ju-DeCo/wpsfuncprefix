@@ -19,7 +19,7 @@ wpsfuncprefix ./...
 ### With go vet
 
 ``` bash
-go vet -vettool=$(which wpsfuncprefix) ./...
+go vet -vettool="$env:yourinstall\path\wpsfuncprefix.exe" ./...
 ```
 
 ### golangci-lint
@@ -34,7 +34,7 @@ linters:
 
   settings:
     custom:
-      example:
+      wpsfuncprefix:
         type: module
         original-url: github.com/Ju-DeCo/wpsfuncprefix
 ```

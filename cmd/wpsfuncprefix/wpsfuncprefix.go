@@ -1,21 +1,35 @@
-package main
+package wpsfuncprefix
 
 import (
+	"github.com/golangci/plugin-module-register/register"
 	"go/ast"
-	"strings"
-
 	"golang.org/x/tools/go/analysis"
-	"golang.org/x/tools/go/analysis/singlechecker"
+	"strings"
 )
 
-var Analyzer = &analysis.Analyzer{
-	Name: "wps_func_prefix",
-	Doc:  "check that function names start with WPS_",
-	Run:  run,
+func init() {
+	register.Plugin("wpsfuncprefix", New)
 }
 
-func main() {
-	singlechecker.Main(Analyzer)
+type PluginWPSFuncPrefix struct{}
+
+func (f *PluginWPSFuncPrefix) BuildAnalyzers() ([]*analysis.Analyzer, error) {
+	return []*analysis.Analyzer{
+		{
+			Name: "wps_func_prefix",
+			Doc:  "check that function names start with WPS_",
+			Run:  run,
+		},
+	}, nil
+}
+
+func (f *PluginWPSFuncPrefix) GetLoadMode() string {
+	return register.LoadModeSyntax
+}
+
+func New(settings any) (register.LinterPlugin, error) {
+
+	return &PluginWPSFuncPrefix{}, nil
 }
 
 func run(pass *analysis.Pass) (interface{}, error) {
