@@ -22,6 +22,23 @@ wpsfuncprefix ./...
 go vet -vettool=$(which wpsfuncprefix) ./...
 ```
 
+### golangci-lint
+
+```yaml
+version: "2"
+
+linters:
+  disable-all: true
+  enable:
+    - wpsfuncprefix
+
+  settings:
+    custom:
+      example:
+        type: module
+        original-url: github.com/Ju-DeCo/wpsfuncprefix
+```
+
 ## Rules
 
 * All functions (except init and main) must start with WPS_
