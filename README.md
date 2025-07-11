@@ -5,7 +5,7 @@ A Go linter that checks function names start with `WPS_`.
 ## Installation
 
 ``` bash
-go install github.com/Ju-DeCo/wpsfuncprefix-linter@latest
+go install github.com/Ju-DeCo/wpsfuncprefix@latest
 ```
 
 ## Usage
